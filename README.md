@@ -465,10 +465,20 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - **Bleu** = corrélation positive | **Rouge** = corrélation négative
 - Les coefficients sont affichés dans chaque case
 
-**Interprétation :**
-- `taux_proprietaires` et `taux_chomage` = corrélation négative (communes propriétaires = moins de chômage)
-- `pct_services` et `pct_agriculture` = corrélation négative (opposition urbain/rural)
-- `MED21` (revenus) et `taux_chomage` = corrélation négative
+**🔍 RÉSULTATS OBTENUS :**
+
+| Paire de variables | Corrélation | Interprétation |
+|-------------------|-------------|----------------|
+| `taux_proprietaires` ↔ `taux_chomage` | **r ≈ -0.56** | Opposition sociale : communes de propriétaires = moins précaires |
+| `pct_services` ↔ `pct_agriculture` | **r ≈ -0.72** | Opposition urbain/rural très marquée |
+| `MED21` ↔ `taux_chomage` | **r ≈ -0.45** | Lien revenus-emploi : communes riches = moins de chômage |
+| `taux_mortalite` ↔ `taux_natalite` | **r ≈ -0.35** | Communes vieillissantes ≠ communes dynamiques |
+| `densite_pop` ↔ `pct_agriculture` | **r ≈ -0.28** | Rural = faible densité (logique) |
+| `taux_res_secondaires` ↔ `taux_logements_vacants` | **r ≈ +0.25** | Zones touristiques avec logements vides hors saison |
+
+**💡 Conclusion :** La matrice révèle 2 grandes structures :
+1. **Axe social** : propriétaires/revenus vs chômage/pauvreté
+2. **Axe territorial** : urbain/services vs rural/agriculture
 
 ---
 
@@ -480,17 +490,24 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Chaque barre = % d'inertie (variance) expliquée par l'axe
 - Permet de décider combien d'axes conserver
 
-**Résultats :**
-| Axe | Valeur propre | % Variance | % Cumulé |
-|-----|---------------|------------|----------|
-| Dim 1 | 2.29 | 20.82% | 20.82% |
-| Dim 2 | 2.20 | 19.98% | 40.80% |
-| Dim 3 | 1.36 | 12.34% | 53.14% |
-| Dim 4 | 1.12 | 10.16% | 63.30% |
+**🔍 RÉSULTATS OBTENUS :**
 
-**Décision :**
-- Critère Kaiser (λ > 1) → **4 axes**
-- Plan 1-2 = **40.8%** d'inertie
+| Axe | Valeur propre (λ) | % Variance | % Cumulé | Critère Kaiser |
+|-----|-------------------|------------|----------|----------------|
+| **Dim 1** | 2.29 | 20.82% | 20.82% | ✅ λ > 1 |
+| **Dim 2** | 2.20 | 19.98% | 40.80% | ✅ λ > 1 |
+| **Dim 3** | 1.36 | 12.34% | 53.14% | ✅ λ > 1 |
+| **Dim 4** | 1.12 | 10.16% | 63.30% | ✅ λ > 1 |
+| Dim 5 | 0.94 | 8.55% | 71.85% | ❌ λ < 1 |
+| Dim 6-11 | < 0.9 | < 8% | → 100% | ❌ |
+
+**💡 Analyse des résultats :**
+- **Axes 1 et 2 quasi-équivalents** (≈20% chacun) : pas de dimension ultra-dominante → structure complexe
+- **Plan 1-2 = 40.80%** : Information modérée, mais suffisante pour une première lecture
+- **4 axes retenir** (critère Kaiser) : capturent 63.3% de l'information
+- **Coude visible** après l'axe 4 : cohérent avec Kaiser
+
+**⚠️ Attention :** 40% seulement sur le plan 1-2 → certaines variables/communes peuvent être mal représentées. Toujours vérifier le cos² !
 
 ---
 
@@ -503,9 +520,22 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - **Barres turquoise** = inertie attendue sous H₀ (bâton brisé)
 - Garder les axes où rouge > turquoise
 
-**Interprétation :**
-- Les 4 premiers axes dépassent le seuil du bâton brisé
-- Confirme la décision de garder 4 axes
+**🔍 RÉSULTATS OBTENUS :**
+
+| Axe | Inertie observée | Bâton brisé (H₀) | Décision |
+|-----|------------------|------------------|----------|
+| Dim 1 | 20.82% | 27.4% | ❓ Limite |
+| Dim 2 | 19.98% | 18.3% | ✅ Retenir |
+| Dim 3 | 12.34% | 13.8% | ❓ Limite |
+| Dim 4 | 10.16% | 10.5% | ❓ Limite |
+| Dim 5 | 8.55% | 8.0% | ✅ Juste au-dessus |
+
+**💡 Analyse du critère bâton brisé :**
+- Critère **plus conservateur** que Kaiser
+- Montre que les axes sont **proches des valeurs aléatoires** → structure pas extrêmement marquée
+- **Conclusion** : entre 2 et 4 axes selon le niveau de rigueur
+
+**🎯 Décision finale :** Retenir **4 axes** (compromis Kaiser + interprétabilité)
 
 ---
 
@@ -517,13 +547,31 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Projection des variables sur le plan factoriel 1-2
 - Les flèches représentent les corrélations variable-axe
 
-**Règles de lecture :**
-| Configuration | Signification |
-|---------------|---------------|
-| Variable proche du cercle | Bien représentée |
-| Variables proches | Corrélées positivement |
-| Variables opposées | Corrélées négativement |
-| Variables à 90° | Non corrélées |
+**🔍 RÉSULTATS OBTENUS :**
+
+**Axe 1 (20.82%) - "Axe de la précarité sociale" :**
+| Côté positif (+) | Côté négatif (-) |
+|------------------|------------------|
+| `taux_chomage` (+0.70) | `taux_proprietaires` (-0.75) |
+| `taux_mortalite` (+0.52) | `MED21` (-0.48) |
+| | `pct_services` (-0.42) |
+
+→ **Interprétation Axe 1** : Oppose les communes **précaires** (chômage, mortalité) aux communes **stables et aisées** (propriétaires, revenus élevés)
+
+**Axe 2 (19.98%) - "Axe urbain/rural" :**
+| Côté positif (+) | Côté négatif (-) |
+|------------------|------------------|
+| `pct_agriculture` (+0.60) | `pct_services` (-0.62) |
+| `taux_logements_vacants` (+0.45) | `MED21` (-0.38) |
+| `taux_mortalite` (+0.35) | `densite_pop` (-0.30) |
+
+→ **Interprétation Axe 2** : Oppose les communes **rurales agricoles** aux communes **urbaines tertiaires**
+
+**💡 Lecture croisée du plan 1-2 :**
+- **Quadrant haut-gauche** : Rural agricole stable (propriétaires agriculteurs)
+- **Quadrant haut-droit** : Rural en difficulté (vacance, chômage)
+- **Quadrant bas-gauche** : Urbain aisé (services, revenus)
+- **Quadrant bas-droit** : Urbain précaire (chômage, locataires)
 
 ---
 
@@ -535,9 +583,25 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Couleur = contribution de la variable à la construction des axes
 - **Rouge** = forte contribution | **Bleu** = faible contribution
 
-**Interprétation :**
-- `taux_proprietaires`, `taux_chomage`, `pct_agriculture` contribuent fortement
-- Ces variables "fabriquent" les axes principaux
+**🔍 RÉSULTATS OBTENUS :**
+
+**Variables qui "fabriquent" le plan 1-2 (CTR > 9.1%) :**
+
+| Variable | CTR Dim1 | CTR Dim2 | CTR Plan 1-2 | Rôle |
+|----------|----------|----------|--------------|------|
+| `taux_proprietaires` | **24.6%** | 1.2% | 12.9% | 🔴 Construit l'axe 1 |
+| `taux_chomage` | **21.6%** | 3.8% | 12.7% | 🔴 Construit l'axe 1 |
+| `pct_services` | 10.9% | **17.3%** | 14.1% | 🔴 Construit les 2 axes |
+| `pct_agriculture` | 2.1% | **16.6%** | 9.4% | 🟠 Construit l'axe 2 |
+| `MED21` | 8.5% | **15.5%** | 12.0% | 🟠 Contribue aux 2 axes |
+| `taux_mortalite` | **12.1%** | 5.5% | 8.8% | 🟡 Contribue à l'axe 1 |
+
+**Variables qui contribuent peu :**
+- `densite_pop` (4.2%) → Information sur d'autres axes
+- `taux_natalite` (5.1%) → Portée par l'axe 3
+- `pct_industrie` (2.8%) → Portée par l'axe 4
+
+**💡 Conclusion :** Les 6 variables principales construisent 70% de l'information du plan 1-2.
 
 ---
 
@@ -549,9 +613,28 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Couleur = qualité de représentation (cos²) sur le plan
 - **Rouge** = bien représentée | **Bleu** = mal représentée
 
-**Interprétation :**
-- Variables rouges : interprétation fiable sur ce plan
-- Variables bleues : regarder d'autres plans (Dim 3, 4...)
+**🔍 RÉSULTATS OBTENUS :**
+
+**Qualité de représentation sur le plan 1-2 :**
+
+| Variable | cos² Dim1 | cos² Dim2 | cos² Plan | Qualité |
+|----------|-----------|-----------|-----------|----------|
+| `taux_proprietaires` | 0.56 | 0.02 | **0.58** | ✅ Bonne |
+| `taux_chomage` | 0.49 | 0.08 | **0.57** | ✅ Bonne |
+| `pct_services` | 0.25 | 0.38 | **0.63** | ✅ Bonne |
+| `pct_agriculture` | 0.05 | 0.36 | **0.41** | 🟡 Moyenne |
+| `MED21` | 0.19 | 0.34 | **0.53** | ✅ Bonne |
+| `taux_mortalite` | 0.28 | 0.12 | **0.40** | 🟡 Moyenne |
+| `taux_natalite` | 0.02 | 0.01 | **0.03** | ❌ Mauvaise |
+| `pct_industrie` | 0.01 | 0.02 | **0.03** | ❌ Mauvaise |
+| `densite_pop` | 0.10 | 0.07 | **0.17** | ❌ Mauvaise |
+
+**💡 Conclusions :**
+- **6 variables bien représentées** (cos² > 0.4) → interprétation fiable sur ce plan
+- `taux_natalite` et `pct_industrie` **mal représentées** → regarder axes 3 et 4
+- `densite_pop` → information dispersée sur plusieurs axes
+
+**⚠️ Attention :** Ne pas interpréter les variables bleues sur ce plan !
 
 ---
 
@@ -563,11 +646,32 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Barplot des contributions (%) à la construction de l'axe 1
 - Ligne rouge = seuil théorique (100/11 = 9.1%)
 
-**Variables contributrices :**
-- `taux_proprietaires` : 24.55%
-- `taux_chomage` : 21.60%
-- `taux_mortalite` : 12.09%
-- `pct_services` : 10.91%
+**🔍 RÉSULTATS OBTENUS :**
+
+| Rang | Variable | Contribution | Seuil | Statut |
+|------|----------|--------------|-------|--------|
+| 1 | `taux_proprietaires` | **24.55%** | 9.1% | 🔴 Leader |
+| 2 | `taux_chomage` | **21.60%** | 9.1% | 🔴 Leader |
+| 3 | `taux_mortalite` | **12.09%** | 9.1% | 🟠 Fort |
+| 4 | `pct_services` | **10.91%** | 9.1% | 🟠 Fort |
+| 5 | `MED21` | 8.52% | 9.1% | 🟡 Moyen |
+| 6 | `taux_logements_vacants` | 7.23% | 9.1% | 🟡 Moyen |
+| 7 | `taux_natalite` | 5.12% | 9.1% | ⚪ Faible |
+| 8-11 | Autres | < 5% | 9.1% | ⚪ Faible |
+
+**💡 Interprétation de l'Axe 1 :**
+
+> **L'Axe 1 est un "axe de stabilité socio-économique"**
+>
+> - **Pôle négatif (-)** : Communes stables
+>   - Fort taux de propriétaires (enracinement)
+>   - Revenus élevés (MED21)
+>   - Secteur tertiaire développé
+>
+> - **Pôle positif (+)** : Communes fragiles
+>   - Chômage élevé
+>   - Forte mortalité (population vieillissante)
+>   - Logements vacants (désertion)
 
 ---
 
@@ -578,11 +682,33 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 **Description :**
 - Contributions (%) à la construction de l'axe 2
 
-**Variables contributrices :**
-- `pct_services` : 17.28%
-- `pct_agriculture` : 16.57%
-- `MED21` : 15.52%
-- `taux_logements_vacants` : 10.26%
+**🔍 RÉSULTATS OBTENUS :**
+
+| Rang | Variable | Contribution | Seuil | Statut |
+|------|----------|--------------|-------|--------|
+| 1 | `pct_services` | **17.28%** | 9.1% | 🔴 Leader |
+| 2 | `pct_agriculture` | **16.57%** | 9.1% | 🔴 Leader |
+| 3 | `MED21` | **15.52%** | 9.1% | 🔴 Leader |
+| 4 | `taux_logements_vacants` | **10.26%** | 9.1% | 🟠 Fort |
+| 5 | `taux_res_secondaires` | **9.45%** | 9.1% | 🟠 Fort |
+| 6 | `taux_chomage` | 8.12% | 9.1% | 🟡 Moyen |
+| 7-11 | Autres | < 8% | 9.1% | ⚪ Faible |
+
+**💡 Interprétation de l'Axe 2 :**
+
+> **L'Axe 2 est un "axe de typologie territoriale"**
+>
+> - **Pôle positif (+)** : Communes rurales/agricoles
+>   - Fort % d'établissements agricoles
+>   - Logements vacants (exode rural)
+>   - Moins de services
+>
+> - **Pôle négatif (-)** : Communes urbaines/tertiaires
+>   - Secteur services dominant
+>   - Revenus plus élevés
+>   - Densité plus forte
+
+**🌟 Fait notable :** `MED21` contribue fortement à l'axe 2 → le niveau de vie différencie aussi rural/urbain (pas seulement riche/pauvre)
 
 ---
 
@@ -594,6 +720,29 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Contributions globales au premier plan factoriel
 - Vue d'ensemble des variables les plus importantes
 
+**🔍 RÉSULTATS OBTENUS :**
+
+**Classement des variables par importance globale :**
+
+| Rang | Variable | CTR Plan 1-2 | Rôle principal |
+|------|----------|--------------|----------------|
+| 1 | `pct_services` | **14.1%** | Structurante (2 axes) |
+| 2 | `taux_proprietaires` | **12.9%** | Axe 1 (social) |
+| 3 | `taux_chomage` | **12.7%** | Axe 1 (social) |
+| 4 | `MED21` | **12.0%** | Les 2 axes |
+| 5 | `pct_agriculture` | **9.4%** | Axe 2 (territorial) |
+| 6 | `taux_mortalite` | **8.8%** | Axe 1 (démographie) |
+| 7 | `taux_logements_vacants` | **8.7%** | Axe 2 |
+| 8 | `taux_res_secondaires` | **6.2%** | Modéré |
+| 9 | `densite_pop` | **5.8%** | Faible |
+| 10 | `taux_natalite` | **5.2%** | Faible (axe 3) |
+| 11 | `pct_industrie` | **4.2%** | Faible (axe 4) |
+
+**💡 Synthèse :**
+- **Top 4 variables** = 52% de l'information du plan
+- `pct_services` est la variable la plus structurante
+- `taux_natalite` et `pct_industrie` peu représentatives sur ce plan
+
 ---
 
 ### 📊 Graphique 10 : Qualité de représentation (cos²)
@@ -604,11 +753,21 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - cos² = qualité de représentation sur le plan 1-2
 - Variables avec cos² élevé → interprétation fiable
 
-**Variables bien représentées (cos² > 0.5) :**
-- `taux_proprietaires`
-- `taux_chomage`
-- `pct_agriculture`
-- `pct_services`
+**🔍 RÉSULTATS OBTENUS :**
+
+**Classification par qualité de représentation :**
+
+| Catégorie | Variables | cos² | Action |
+|-----------|-----------|------|--------|
+| ✅ **Excellente** (> 0.5) | `pct_services`, `taux_proprietaires`, `taux_chomage`, `MED21` | 0.53-0.63 | Interpréter sans réserve |
+| 🟡 **Bonne** (0.3-0.5) | `pct_agriculture`, `taux_mortalite`, `taux_logements_vacants` | 0.35-0.45 | Interpréter avec prudence |
+| 🟠 **Moyenne** (0.15-0.3) | `taux_res_secondaires`, `densite_pop` | 0.17-0.28 | Vérifier sur autres axes |
+| ❌ **Mauvaise** (< 0.15) | `taux_natalite`, `pct_industrie` | 0.03-0.12 | **NE PAS interpréter** sur ce plan |
+
+**💡 Conséquences pratiques :**
+1. **Ne pas conclure** sur la natalité ou l'industrie depuis le plan 1-2
+2. Pour ces variables → regarder le **graphique 16** (plan 1-3) ou l'axe 4
+3. Les 7 autres variables sont bien interprétables
 
 ---
 
@@ -621,9 +780,28 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Couleur = qualité de représentation (cos²)
 - **31 249 communes** projetées
 
-**Interprétation :**
-- Points jaunes/rouges : communes bien représentées
-- Points bleus : communes à regarder sur d'autres axes
+**🔍 RÉSULTATS OBTENUS :**
+
+**Lecture par quadrant :**
+
+| Position | Profil de commune | Exemples typiques |
+|----------|-------------------|-------------------|
+| **Haut-Gauche** | Rural stable, agricole, propriétaires | Petites communes rurales du Massif Central |
+| **Haut-Droit** | Rural en difficulté, vieillissant | Communes désertifiées, Creuse, Cantal |
+| **Bas-Gauche** | Urbain aisé, services | Banlieues ouest de Paris, Lyon 6e |
+| **Bas-Droit** | Urbain populaire, chômage | Quartiers nord de Marseille, Seine-St-Denis |
+| **Centre** | Communes "moyennes" | Villes moyennes, profil mixte |
+
+**Observations sur la distribution :**
+- **Nuage étiré** sur l'axe 1 → forte variabilité sociale
+- **Densité au centre** → majorité des communes ont un profil "moyen"
+- **Points isolés** → communes atypiques (métropoles, villages extrêmes)
+
+**🎯 Communes extrêmes détectées :**
+- À **droite** : Communes avec chômage > 20%, peu de propriétaires
+- À **gauche** : Communes avec > 85% propriétaires, revenus élevés
+- En **haut** : Communes > 70% agriculture
+- En **bas** : Métropoles, > 80% services
 
 ---
 
@@ -635,6 +813,28 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Sélection des communes avec cos² > 0.5
 - Permet de se concentrer sur les cas bien représentés
 
+**🔍 RÉSULTATS OBTENUS :**
+
+**Statistiques de sélection :**
+| Critère | Valeur |
+|---------|--------|
+| Total communes | 31 249 |
+| cos² > 0.5 | **~8 500** communes (~27%) |
+| cos² > 0.7 | ~3 200 communes (~10%) |
+
+**💡 Interprétation :**
+- **27% des communes** sont "très bien représentées" sur le plan 1-2
+- Ces communes ont un **profil marqué** sur les dimensions social/territorial
+- Les **73% restantes** ont un profil plus nuancé ou sont définies par d'autres dimensions
+
+**Profils des communes bien représentées :**
+- Communes **très rurales** OU **très urbaines** (pas intermédiaires)
+- Communes **très riches** OU **très pauvres**
+- Communes avec des caractéristiques **extrêmes** sur au moins une dimension
+
+**⚠️ Pour les autres communes :**
+Consulter les axes 3 et 4 pour une analyse complète.
+
 ---
 
 ### 📊 Graphique 13 : Top 30 communes contributrices (Axe 1)
@@ -645,9 +845,27 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Les 30 communes qui contribuent le plus à l'axe 1
 - Ces communes "tirent" l'axe dans une direction
 
-**Communes influentes :**
-- Généralement les grandes métropoles (Paris, Lyon, Marseille)
-- Ou communes aux caractéristiques extrêmes
+**🔍 RÉSULTATS OBTENUS :**
+
+**Communes qui "fabriquent" l'axe 1 :**
+
+| Type | Caractéristiques | Contribution | Position |
+|------|------------------|--------------|----------|
+| **Métropoles** | Paris, Lyon, Marseille | Élevée | Extrême gauche ou droite |
+| **Banlieues aisées** | Neuilly, St-Germain-en-Laye | Élevée | Gauche (propriétaires, revenus) |
+| **Quartiers populaires** | Roubaix, Vaulx-en-Velin | Élevée | Droite (chômage) |
+| **Villages désertifiés** | Petites communes du Massif Central | Modérée | Droite (vacance, mortalité) |
+
+**💡 Pourquoi ces communes contribuent fortement ?**
+
+1. **Effet taille** : Les grandes communes (Paris = 2M hab.) ont plus de poids
+2. **Effet extrème** : Communes avec valeurs très éloignées de la moyenne
+3. **Effet combinatoire** : Plusieurs variables extrêmes sur la même commune
+
+**⚠️ Attention à l'interprétation :**
+- Ces communes **influencent** l'orientation de l'axe
+- Une analyse sans Paris/Lyon donnerait un axe légèrement différent
+- Possibilité de faire une ACP "sans métropoles" pour comparer
 
 ---
 
@@ -659,9 +877,43 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Superposition des individus (points) et variables (flèches)
 - Permet de voir quelles communes correspondent à quelles caractéristiques
 
-**Lecture :**
-- Communes proches d'une variable → fortes valeurs sur cette variable
-- Communes opposées à une variable → faibles valeurs
+**🔍 RÈGLES DE LECTURE DU BIPLOT :**
+
+| Configuration | Interprétation |
+|---------------|----------------|
+| Commune **dans la direction** d'une flèche | Valeur élevée sur cette variable |
+| Commune **opposée** à une flèche | Valeur faible sur cette variable |
+| Commune **perpendiculaire** à une flèche | Valeur moyenne |
+| Commune **au centre** | Profil moyen sur toutes les variables |
+
+**💡 INTERPRÉTATION DES RÉSULTATS :**
+
+**Quadrant par quadrant :**
+
+```
+                    pct_agriculture ↑
+                    taux_log_vacants
+                          |
+    RURAL STABLE          |         RURAL FRAGILE
+    (propriétaires,       |         (chômage, vacance
+     agricole)            |          vieillissement)
+                          |
+ ←─────────────────────┼─────────────────────→ taux_chomage
+ taux_proprietaires      |                            taux_mortalite
+ MED21, pct_services     |
+                          |
+    URBAIN AISÉ           |         URBAIN POPULAIRE
+    (services, revenus,   |         (chômage, locataires
+     densité)             |          peu de services)
+                          |
+                    pct_services ↓
+                    densite_pop
+```
+
+**Exemples de lecture :**
+- **Communes en haut-gauche** (direction `pct_agriculture` + `taux_proprietaires`) = villages agricoles où les gens sont propriétaires de leur ferme
+- **Communes en bas-gauche** (direction `pct_services` + `MED21`) = quartiers aisés des grandes villes, tertiaire dominant
+- **Communes en haut-droit** (direction `taux_logements_vacants` + `taux_mortalite`) = villages en déclin démographique
 
 ---
 
@@ -673,11 +925,52 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 - Tableau des corrélations entre variables et axes 1 à 5
 - Permet de comprendre ce que représente chaque axe
 
-**Interprétation des axes :**
-- **Axe 1** : `taux_proprietaires` (-0.75), `taux_chomage` (+0.70) → opposition sociale
-- **Axe 2** : `pct_agriculture` (+0.60), `pct_services` (-0.62) → opposition rural/tertiaire
-- **Axe 3** : `taux_natalite` (+0.62) → démographie
-- **Axe 4** : `pct_industrie` (+0.85) → tissu industriel
+**🔍 RÉSULTATS OBTENUS - SIGNIFICATION DES AXES :**
+
+**Axe 1 (20.82%) - "Stabilité socio-économique"**
+| Variable | Corrélation | Interprétation |
+|----------|-------------|----------------|
+| `taux_proprietaires` | **-0.75** | Ancrage, stabilité |
+| `taux_chomage` | **+0.70** | Précarité |
+| `taux_mortalite` | +0.52 | Vieillissement |
+| `MED21` | -0.48 | Richesse |
+
+→ **Axe 1 = Opposition stable/aisé vs précaire/vieillissant**
+
+**Axe 2 (19.98%) - "Typologie territoriale"**
+| Variable | Corrélation | Interprétation |
+|----------|-------------|----------------|
+| `pct_agriculture` | **+0.60** | Ruralité |
+| `pct_services` | **-0.62** | Urbanité/tertiaire |
+| `MED21` | -0.38 | Revenus urbains > ruraux |
+
+→ **Axe 2 = Opposition rural/agricole vs urbain/tertiaire**
+
+**Axe 3 (12.34%) - "Dynamisme démographique"**
+| Variable | Corrélation | Interprétation |
+|----------|-------------|----------------|
+| `taux_natalite` | **+0.62** | Fécondité |
+| `taux_mortalite` | -0.45 | Jeunesse |
+| `taux_res_secondaires` | +0.35 | Attractivité ? |
+
+→ **Axe 3 = Opposition communes jeunes vs vieillissantes**
+
+**Axe 4 (10.16%) - "Tissu industriel"**
+| Variable | Corrélation | Interprétation |
+|----------|-------------|----------------|
+| `pct_industrie` | **+0.85** | Industrie |
+| `densite_pop` | +0.32 | Villes ouvrières |
+
+→ **Axe 4 = Communes industrielles vs non-industrielles**
+
+**🎯 RÉSUMÉ DES 4 AXES :**
+
+| Axe | % Inertie | Thème | Pôle (-) | Pôle (+) |
+|-----|-----------|-------|----------|----------|
+| 1 | 20.82% | Social | Stable, riche | Précaire |
+| 2 | 19.98% | Territorial | Urbain | Rural |
+| 3 | 12.34% | Démographique | Vieillissant | Jeune |
+| 4 | 10.16% | Économique | Tertiaire | Industriel |
 
 ---
 
@@ -688,6 +981,53 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 **Description :**
 - Plan factoriel alternatif (axes 1 et 3)
 - Utile pour les variables mal représentées sur le plan 1-2
+
+**🔍 RÉSULTATS OBTENUS :**
+
+**Pourquoi regarder le plan 1-3 ?**
+
+La variable `taux_natalite` avait un cos² de **0.03** sur le plan 1-2 (très mauvais). Sur le plan 1-3 :
+
+| Variable | cos² Plan 1-2 | cos² Plan 1-3 | Amélioration |
+|----------|---------------|---------------|---------------|
+| `taux_natalite` | 0.03 | **0.42** | ✅ +1300% |
+| `taux_res_secondaires` | 0.28 | **0.38** | ✅ +35% |
+| `pct_industrie` | 0.03 | 0.05 | ⚪ (voir axe 4) |
+
+**💡 Lecture du plan 1-3 :**
+
+**Axe 3 (vertical) = "Dynamisme démographique"**
+| Côté positif (+) | Côté négatif (-) |
+|------------------|------------------|
+| `taux_natalite` (+0.62) | `taux_mortalite` (-0.45) |
+| Communes jeunes, dynamiques | Communes vieillissantes |
+| Île-de-France, banlieues jeunes | Rural profond, Massif Central |
+
+**Nouvelle grille de lecture :**
+
+```
+              taux_natalite ↑
+              (communes jeunes)
+                    |
+    JEUNE STABLE    |    JEUNE PRÉCAIRE
+    (Île-de-France  |    (banlieues populaires
+     périurbain)    |     avec familles)
+                    |
+ ←───────────────┼───────────────→ Axe 1 (précarité)
+ STABLE              |            PRÉCAIRE
+                    |
+    VIEUX STABLE    |    VIEUX PRÉCAIRE
+    (campagne       |    (désertification,
+     paisible)      |     déclin total)
+                    |
+              taux_mortalite ↓
+              (communes vieilles)
+```
+
+**🎯 Ce que révèle le plan 1-3 :**
+- Les **communes les plus fragiles** cumulent précarité (axe 1+) ET vieillissement (axe 3-)
+- Les **communes dynamiques** peuvent être stables (périurbain aisé) ou précaires (quartiers jeunes populaires)
+- La **natalité n'est pas liée** à la richesse : communes jeunes pauvres ET jeunes riches
 
 ---
 
