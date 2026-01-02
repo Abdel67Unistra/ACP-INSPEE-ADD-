@@ -8,43 +8,44 @@
 
 ### 📌 Introduction
 1. [📍 Mise en situation](#-mise-en-situation)
-2. [🔗 Source des données](#-source-des-données)
+2. [🎓 Pourquoi une ACP et pas une AFC ou ACM ?](#-pourquoi-une-acp-et-pas-une-afc-ou-acm-)
+3. [🔗 Source des données](#-source-des-données)
 
 ### 📌 Description des données
-3. [📚 Dictionnaire complet des variables](#-dictionnaire-complet-des-variables)
-4. [🔢 Variables de l'analyse ACP](#-variables-de-lanalyse-acp)
+4. [📚 Dictionnaire complet des variables](#-dictionnaire-complet-des-variables)
+5. [🔢 Variables de l'analyse ACP](#-variables-de-lanalyse-acp)
 
 ### 📌 Méthodologie
-5. [🎯 L'ACP en 5 étapes (PICCI)](#-lacp-en-5-étapes-picci)
-6. [🔧 Fonctions R utilisées](#-fonctions-r-utilisées)
+6. [🎯 L'ACP en 5 étapes (PICCI)](#-lacp-en-5-étapes-picci)
+7. [🔧 Fonctions R utilisées](#-fonctions-r-utilisées)
 
 ### 📌 Résultats de l'analyse
-7. [📈 Interprétation des résultats](#-interprétation-des-résultats)
-8. [📊 Sorties R détaillées](#-sorties-r-détaillées-et-leur-interprétation)
-9. [🖼️ Graphiques de l'ACP](#%EF%B8%8F-graphiques-de-lanalyse-acp)
-   - [Graphique 1 : Matrice de corrélation](#-graphique-1--matrice-de-corrélation)
-   - [Graphique 2 : Éboulis des valeurs propres](#-graphique-2--éboulis-des-valeurs-propres-scree-plot)
-   - [Graphique 3 : Critère du bâton brisé](#-graphique-3--critère-du-bâton-brisé)
-   - [Graphique 4 : Cercle des corrélations](#-graphique-4--cercle-des-corrélations-dim1-dim2)
-   - [Graphique 5 : Cercle avec contributions](#-graphique-5--cercle-avec-contributions-en-couleur)
-   - [Graphique 6 : Cercle avec cos²](#-graphique-6--cercle-avec-cos-en-couleur)
-   - [Graphique 7 : Contributions axe 1](#-graphique-7--contributions-des-variables-à-laxe-1)
-   - [Graphique 8 : Contributions axe 2](#-graphique-8--contributions-des-variables-à-laxe-2)
-   - [Graphique 9 : Contributions plan 1-2](#-graphique-9--contributions-au-plan-1-2)
-   - [Graphique 10 : Qualité cos²](#-graphique-10--qualité-de-représentation-cos)
-   - [Graphique 11 : Nuage des individus](#-graphique-11--nuage-des-individus-communes)
-   - [Graphique 12 : Individus sélectionnés](#-graphique-12--individus-bien-représentés-cos--05)
-   - [Graphique 13 : Top contributeurs](#-graphique-13--top-30-communes-contributrices-axe-1)
-   - [Graphique 14 : Biplot](#-graphique-14--biplot-individus--variables)
-   - [Graphique 15 : Heatmap corrélations](#-graphique-15--corrélations-variables-axes-heatmap)
-   - [Graphique 16 : Cercle Dim1-Dim3](#-graphique-16--cercle-des-corrélations-dim1-dim3)
-10. [📋 Sorties numériques détaillées](#-sorties-numériques-détaillées)
+8. [📈 Interprétation des résultats](#-interprétation-des-résultats)
+9. [📊 Sorties R détaillées](#-sorties-r-détaillées-et-leur-interprétation)
+10. [🖼️ Graphiques de l'ACP](#%EF%B8%8F-graphiques-de-lanalyse-acp)
+    - [Graphique 1 : Matrice de corrélation](#-graphique-1--matrice-de-corrélation)
+    - [Graphique 2 : Éboulis des valeurs propres](#-graphique-2--éboulis-des-valeurs-propres-scree-plot)
+    - [Graphique 3 : Critère du bâton brisé](#-graphique-3--critère-du-bâton-brisé)
+    - [Graphique 4 : Cercle des corrélations](#-graphique-4--cercle-des-corrélations-dim1-dim2)
+    - [Graphique 5 : Cercle avec contributions](#-graphique-5--cercle-avec-contributions-en-couleur)
+    - [Graphique 6 : Cercle avec cos²](#-graphique-6--cercle-avec-cos-en-couleur)
+    - [Graphique 7 : Contributions axe 1](#-graphique-7--contributions-des-variables-à-laxe-1)
+    - [Graphique 8 : Contributions axe 2](#-graphique-8--contributions-des-variables-à-laxe-2)
+    - [Graphique 9 : Contributions plan 1-2](#-graphique-9--contributions-au-plan-1-2)
+    - [Graphique 10 : Qualité cos²](#-graphique-10--qualité-de-représentation-cos)
+    - [Graphique 11 : Nuage des individus](#-graphique-11--nuage-des-individus-communes)
+    - [Graphique 12 : Individus sélectionnés](#-graphique-12--individus-bien-représentés-cos--05)
+    - [Graphique 13 : Top contributeurs](#-graphique-13--top-30-communes-contributrices-axe-1)
+    - [Graphique 14 : Biplot](#-graphique-14--biplot-individus--variables)
+    - [Graphique 15 : Heatmap corrélations](#-graphique-15--corrélations-variables-axes-heatmap)
+    - [Graphique 16 : Cercle Dim1-Dim3](#-graphique-16--cercle-des-corrélations-dim1-dim3)
+11. [📋 Sorties numériques détaillées](#-sorties-numériques-détaillées)
 
 ### 📌 Annexes
-11. [🧠 Mnémotechniques étudiant](#-mnémotechniques-étudiant)
-12. [📁 Structure du projet](#-structure-du-projet)
-13. [📚 Références](#-références)
-14. [✍️ Auteur](#%EF%B8%8F-auteur)
+12. [🧠 Mnémotechniques étudiant](#-mnémotechniques-étudiant)
+13. [📁 Structure du projet](#-structure-du-projet)
+14. [📚 Références](#-références)
+15. [✍️ Auteur](#%EF%B8%8F-auteur)
 
 ---
 
@@ -74,6 +75,84 @@ Avec **32 variables** décrivant chaque commune (démographie, logement, revenus
 | Identifier les variables clés | Cercle des corrélations |
 | Détecter des groupes | Clusters visuels sur le nuage d'individus |
 | Repérer les communes atypiques | Individus éloignés du centre |
+
+---
+
+### 🎓 Pourquoi une ACP et pas une AFC ou ACM ?
+
+En analyse des données, le choix de la méthode factorielle dépend de la **nature des variables** :
+
+| Méthode | Type de données | Exemple |
+|---------|-----------------|---------|
+| **ACP** (Analyse en Composantes Principales) | Variables **quantitatives continues** | Revenus (€), taux (%), densité (hab/km²) |
+| **AFC** (Analyse Factorielle des Correspondances) | **Tableau de contingence** (2 variables qualitatives) | Profession × Région |
+| **ACM** (Analyse des Correspondances Multiples) | Variables **qualitatives** (catégorielles) | Diplôme (Bac/Licence/Master), CSP (Cadre/Employé/Ouvrier) |
+
+#### 📊 Nature de nos données INSEE
+
+Nos 11 variables sont toutes **quantitatives continues** :
+
+| Variable | Type | Valeurs |
+|----------|------|---------|
+| `densite_pop` | Quantitative | 0.5 à 25 000 hab/km² |
+| `taux_natalite` | Quantitative | 0 à 30 ‰ |
+| `taux_mortalite` | Quantitative | 0 à 50 ‰ |
+| `taux_proprietaires` | Quantitative | 20 à 95 % |
+| `MED21` | Quantitative | 12 000 à 50 000 €/an |
+| `taux_chomage` | Quantitative | 0 à 35 % |
+| `pct_agriculture` | Quantitative | 0 à 100 % |
+| `pct_industrie` | Quantitative | 0 à 80 % |
+| `pct_services` | Quantitative | 0 à 100 % |
+| ... | ... | ... |
+
+#### ❌ Pourquoi pas l'AFC ?
+
+L'**AFC** nécessite un **tableau de contingence** (effectifs croisés entre 2 variables qualitatives).
+
+Exemple où l'AFC serait appropriée :
+```
+              | Île-de-France | Bretagne | PACA | ...
+--------------+---------------+----------+------+-----
+Agriculteurs  |     5 200     |  18 400  | 8 900| ...
+Cadres        |   890 000     |  42 000  |95 000| ...
+Ouvriers      |   320 000     |  78 000  |89 000| ...
+```
+
+➡️ **Notre cas** : Nous n'avons pas de tableau de contingence. Nos données sont un tableau **individus × variables quantitatives**.
+
+#### ❌ Pourquoi pas l'ACM ?
+
+L'**ACM** est conçue pour des **variables qualitatives** (catégorielles).
+
+Exemple où l'ACM serait appropriée :
+```
+Commune | Type_zone | Niveau_revenu | Démographie
+--------|-----------|---------------|------------
+Paris   | Urbain    | Élevé         | Jeune
+Aurillac| Rural     | Moyen         | Vieillissant
+Nice    | Littoral  | Élevé         | Mixte
+```
+
+➡️ **Notre cas** : Nos variables sont des **valeurs numériques continues** (taux, pourcentages, euros), pas des catégories.
+
+#### ✅ Pourquoi l'ACP est le bon choix ?
+
+| Critère | Notre jeu de données | Méthode adaptée |
+|---------|---------------------|-----------------|
+| Nature des variables | Quantitatives continues | ✅ **ACP** |
+| Structure du tableau | Individus × Variables | ✅ **ACP** |
+| Objectif | Réduire la dimensionnalité | ✅ **ACP** |
+| Visualisation | Cercle des corrélations | ✅ **ACP** |
+
+**Conclusion** : L'ACP est la méthode factorielle adaptée car :
+1. ✅ Nos 11 variables sont **quantitatives** (pas qualitatives)
+2. ✅ Notre tableau est de type **individus × variables** (pas un tableau de contingence)
+3. ✅ Nous cherchons des **combinaisons linéaires** des variables
+4. ✅ Nous voulons identifier les **corrélations** entre variables
+
+> 💡 **Remarque** : On pourrait compléter cette ACP par une **Classification Ascendante Hiérarchique (CAH)** pour regrouper les communes en clusters, ou projeter une variable qualitative en **illustrative** (comme le département).
+
+---
 
 ### Enjeux pratiques
 Cette analyse peut servir à :
@@ -492,12 +571,35 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Matrice de corrélation](images/01_matrice_correlation.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce que la matrice de corrélation ?**
+
+La matrice de corrélation **R** est une matrice carrée symétrique de dimension $p \times p$ (où p = nombre de variables) contenant les **coefficients de corrélation linéaire de Pearson** entre chaque paire de variables.
+
+**Formule du coefficient de corrélation :**
+
+$$r_{jk} = \frac{\sum_{i=1}^{n}(x_{ij} - \bar{x}_j)(x_{ik} - \bar{x}_k)}{\sqrt{\sum_{i=1}^{n}(x_{ij} - \bar{x}_j)^2} \sqrt{\sum_{i=1}^{n}(x_{ik} - \bar{x}_k)^2}} = \frac{Cov(X_j, X_k)}{\sigma_j \sigma_k}$$
+
+**Propriétés importantes :**
+- $r \in [-1, +1]$
+- $r = +1$ : corrélation positive parfaite
+- $r = -1$ : corrélation négative parfaite  
+- $r = 0$ : absence de corrélation linéaire
+- Diagonale = 1 (chaque variable est parfaitement corrélée avec elle-même)
+
+**Lien avec l'ACP :**
+> L'ACP sur données centrées-réduites revient à diagonaliser la matrice de corrélation R.
+> Les valeurs propres de R sont les variances des composantes principales.
+
+#### 📊 Description du graphique
+
 - Matrice triangulaire inférieure montrant les corrélations entre les 11 variables
 - **Bleu** = corrélation positive | **Rouge** = corrélation négative
+- **Intensité de la couleur** = force de la corrélation
 - Les coefficients sont affichés dans chaque case
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 | Paire de variables | Corrélation | Interprétation |
 |-------------------|-------------|----------------|
@@ -518,11 +620,38 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Éboulis des valeurs propres](images/02_eboulis_valeurs_propres.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce qu'une valeur propre ?**
+
+En ACP, les **valeurs propres** $\lambda_1, \lambda_2, ..., \lambda_p$ sont obtenues par diagonalisation de la matrice de corrélation R :
+
+$$R = V \Lambda V^T$$
+
+où $\Lambda = diag(\lambda_1, ..., \lambda_p)$ et V est la matrice des vecteurs propres.
+
+**Interprétation :**
+- $\lambda_k$ = **variance de la k-ième composante principale**
+- $\lambda_k$ = quantité d'information (inertie) capturée par l'axe k
+- **Inertie totale** = $\sum_{k=1}^{p} \lambda_k = p$ (nombre de variables)
+- **% d'inertie de l'axe k** = $\frac{\lambda_k}{p} \times 100$
+
+**Critères de sélection du nombre d'axes :**
+
+| Critère | Règle | Justification |
+|---------|-------|---------------|
+| **Kaiser** | $\lambda > 1$ | Un axe doit capturer plus qu'une variable seule |
+| **Coude** | Cassure visuelle | Après le coude, les axes apportent peu |
+| **% cumulé** | > 70-80% | Seuil arbitraire de "suffisamment d'info" |
+| **Bâton brisé** | $\lambda_{obs} > \lambda_{H_0}$ | Comparaison à des données aléatoires |
+
+#### 📊 Description du graphique
+
 - Chaque barre = % d'inertie (variance) expliquée par l'axe
+- La courbe relie les sommets des barres pour visualiser le "coude"
 - Permet de décider combien d'axes conserver
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 | Axe | Valeur propre (λ) | % Variance | % Cumulé | Critère Kaiser |
 |-----|-------------------|------------|----------|----------------|
@@ -547,12 +676,33 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Bâton brisé](images/03_baton_brise.png)
 
-**Description :**
-- **Barres rouges** = inertie observée
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce que le critère du bâton brisé (Broken Stick) ?**
+
+Le critère du bâton brisé compare les valeurs propres observées à celles attendues **sous l'hypothèse nulle** que les données n'ont pas de structure.
+
+**Métaphore du bâton :**
+> Imaginez un bâton de longueur 1 (= inertie totale normalisée) que l'on casse aléatoirement en p morceaux. La distribution des longueurs de ces morceaux suit la loi du bâton brisé.
+
+**Formule de l'inertie attendue sous H₀ :**
+
+$$E(\lambda_k) = \frac{1}{p} \sum_{j=k}^{p} \frac{1}{j}$$
+
+**Règle de décision :**
+- Si $\lambda_k^{obs} > \lambda_k^{H_0}$ : l'axe k capture plus d'information qu'attendu par hasard → **retenir**
+- Si $\lambda_k^{obs} \leq \lambda_k^{H_0}$ : l'axe k ne fait pas mieux que le hasard → **rejeter**
+
+**Avantage sur Kaiser :**
+> Le critère du bâton brisé est **plus conservateur** et tient compte du nombre de variables, contrairement à Kaiser qui fixe un seuil absolu ($\lambda > 1$).
+
+#### 📊 Description du graphique
+
+- **Barres rouges** = inertie observée (nos données)
 - **Barres turquoise** = inertie attendue sous H₀ (bâton brisé)
 - Garder les axes où rouge > turquoise
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 | Axe | Inertie observée | Bâton brisé (H₀) | Décision |
 |-----|------------------|------------------|----------|
@@ -575,11 +725,43 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Cercle des corrélations](images/04_cercle_correlations.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce que le cercle des corrélations ?**
+
+Le cercle des corrélations représente les **variables** (pas les individus) dans le plan factoriel. Chaque variable est représentée par un vecteur dont les coordonnées sont ses **corrélations avec les axes principaux**.
+
+**Coordonnées d'une variable sur un axe :**
+
+$$cor(X_j, F_k) = \sqrt{\lambda_k} \times v_{jk}$$
+
+où $v_{jk}$ est la j-ième composante du k-ième vecteur propre.
+
+**Propriété fondamentale :**
+> La somme des carrés des coordonnées d'une variable sur tous les axes = 1
+> $$\sum_{k=1}^{p} cor^2(X_j, F_k) = 1$$
+
+**Règles de lecture du cercle :**
+
+| Configuration | Signification mathématique | Interprétation |
+|---------------|---------------------------|----------------|
+| Variable **sur le cercle** | $cos^2 \approx 1$ | Bien représentée sur ce plan |
+| Variable **au centre** | $cos^2 \approx 0$ | Mal représentée, regarder autres axes |
+| Variables **proches** | Angle $\theta \approx 0°$ | Corrélées positivement ($r > 0$) |
+| Variables **opposées** | Angle $\theta \approx 180°$ | Corrélées négativement ($r < 0$) |
+| Variables **perpendiculaires** | Angle $\theta \approx 90°$ | Non corrélées ($r \approx 0$) |
+
+**Attention :**
+> L'angle entre deux variables dans le cercle approxime leur coefficient de corrélation : $r \approx cos(\theta)$
+> Cette approximation n'est exacte que si les deux variables sont bien représentées sur le plan !
+
+#### 📊 Description du graphique
+
 - Projection des variables sur le plan factoriel 1-2
 - Les flèches représentent les corrélations variable-axe
+- Le cercle de rayon 1 est le cercle des corrélations parfaites
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 **Axe 1 (20.82%) - "Axe de la précarité sociale" :**
 | Côté positif (+) | Côté négatif (-) |
@@ -611,11 +793,35 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Cercle avec contributions](images/05_cercle_contribution.png)
 
-**Description :**
-- Couleur = contribution de la variable à la construction des axes
-- **Rouge** = forte contribution | **Bleu** = faible contribution
+#### 🎓 Rappel théorique (cours)
 
-**🔍 RÉSULTATS OBTENUS :**
+**Qu'est-ce que la contribution (CTR) ?**
+
+La **contribution** d'une variable (ou d'un individu) mesure sa **part dans la construction d'un axe**. C'est le pourcentage d'inertie de l'axe dû à cet élément.
+
+**Formule de la contribution d'une variable j à l'axe k :**
+
+$$CTR_j(F_k) = \frac{cor^2(X_j, F_k)}{\lambda_k} = \frac{coord_{jk}^2}{\lambda_k}$$
+
+**Propriétés :**
+- $\sum_{j=1}^{p} CTR_j(F_k) = 100\%$ (la somme des contributions de toutes les variables à un axe = 100%)
+- En théorie, une variable contribue « normalement » si $CTR = \frac{100}{p}$ (contribution uniforme)
+
+**Seuil de contribution significative :**
+> Avec p = 11 variables, le seuil théorique est $\frac{100}{11} = 9.1\%$
+> Une variable contribue **significativement** si $CTR > 9.1\%$
+
+**Interprétation :**
+- Variable à forte CTR → **fabrique** l'axe, lui donne son sens
+- Variable à faible CTR → **suit** l'axe mais ne le définit pas
+
+#### 📊 Description du graphique
+
+- Cercle des corrélations avec couleur = contribution
+- **Rouge** = forte contribution | **Bleu** = faible contribution
+- Permet de voir quelles variables "construisent" le plan
+
+#### 🔍 RÉSULTATS OBTENUS :
 
 **Variables qui "fabriquent" le plan 1-2 (CTR > 9.1%) :**
 
@@ -641,11 +847,42 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Cercle avec cos²](images/06_cercle_cos2.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce que le cos² (qualité de représentation) ?**
+
+Le **cos²** mesure la **qualité de représentation** d'une variable (ou d'un individu) sur un axe ou un plan. C'est le carré du cosinus de l'angle entre le vecteur original et sa projection.
+
+**Formule du cos² d'une variable j sur l'axe k :**
+
+$$cos^2_j(F_k) = cor^2(X_j, F_k) = \frac{coord_{jk}^2}{\|X_j\|^2}$$
+
+Pour les variables centrées-réduites : $\|X_j\| = 1$, donc $cos^2 = coord^2$
+
+**Propriétés fondamentales :**
+- $cos^2 \in [0, 1]$
+- $\sum_{k=1}^{p} cos^2_j(F_k) = 1$ (100% de l'information est répartie sur les axes)
+- $cos^2_{plan} = cos^2_{axe1} + cos^2_{axe2}$
+
+**Différence CTR vs cos² :**
+
+| Indicateur | Question posée | Somme = 100% sur... |
+|------------|----------------|----------------------|
+| **CTR** | "Combien cette variable **fabrique** l'axe ?" | Les variables (colonne) |
+| **cos²** | "Combien cette variable est **représentée** par l'axe ?" | Les axes (ligne) |
+
+**Règle d'interprétation :**
+> - $cos^2 > 0.5$ : **Bonne** représentation → interprétation fiable
+> - $0.2 < cos^2 < 0.5$ : **Moyenne** → prudence
+> - $cos^2 < 0.2$ : **Mauvaise** → NE PAS interpréter sur ce plan !
+
+#### 📊 Description du graphique
+
 - Couleur = qualité de représentation (cos²) sur le plan
 - **Rouge** = bien représentée | **Bleu** = mal représentée
+- Permet de savoir quelles variables on peut interpréter avec confiance
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :**
 
 **Qualité de représentation sur le plan 1-2 :**
 
@@ -674,11 +911,27 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Contributions Dim1](images/07_contrib_dim1.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Comment lire un diagramme de contributions ?**
+
+Le diagramme en barres montre la **contribution relative** de chaque variable à la construction d'un axe. 
+
+**Règles d'interprétation :**
+- La **ligne rouge horizontale** = seuil de contribution uniforme ($\frac{100}{p}$)
+- Variables **au-dessus du seuil** → contribuent significativement à l'axe
+- Variables **en-dessous** → suivent l'axe mais ne le définissent pas
+
+**Interprétation sémantique des axes :**
+> Pour nommer un axe, on regarde les variables qui y contribuent le plus et on cherche le **concept commun** qui les relie.
+
+#### 📊 Description du graphique
+
 - Barplot des contributions (%) à la construction de l'axe 1
 - Ligne rouge = seuil théorique (100/11 = 9.1%)
+- Les barres sont triées par ordre décroissant de contribution
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 | Rang | Variable | Contribution | Seuil | Statut |
 |------|----------|--------------|-------|--------|
@@ -711,10 +964,23 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Contributions Dim2](images/08_contrib_dim2.png)
 
-**Description :**
-- Contributions (%) à la construction de l'axe 2
+#### 🎓 Rappel théorique (cours)
 
-**🔍 RÉSULTATS OBTENUS :**
+**L'axe 2 capture une information différente de l'axe 1**
+
+Par construction (orthogonalité des composantes principales), l'axe 2 est **non corrélé** à l'axe 1. Il capture donc une **dimension indépendante** de la variabilité des données.
+
+**Propriété d'orthogonalité :**
+$$cor(F_1, F_2) = 0$$
+
+Cela signifie que les phénomènes décrits par l'axe 1 et l'axe 2 sont **statistiquement indépendants**.
+
+#### 📊 Description du graphique
+
+- Contributions (%) à la construction de l'axe 2
+- Variables différentes de celles de l'axe 1 peuvent dominer
+
+#### 🔍 RÉSULTATS OBTENUS :
 
 | Rang | Variable | Contribution | Seuil | Statut |
 |------|----------|--------------|-------|--------|
@@ -748,11 +1014,23 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Contributions Plan 1-2](images/09_contrib_plan12.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Contribution au plan = synthèse des deux axes**
+
+La contribution d'une variable au **plan** est une moyenne pondérée de ses contributions aux deux axes, pondérée par l'inertie de chaque axe :
+
+$$CTR_{plan} = \frac{\lambda_1 \times CTR_{axe1} + \lambda_2 \times CTR_{axe2}}{\lambda_1 + \lambda_2}$$
+
+**Utilité :**
+> Permet d'identifier les variables les plus importantes pour l'interprétation globale du premier plan factoriel.
+
+#### 📊 Description du graphique
+
 - Contributions globales au premier plan factoriel
 - Vue d'ensemble des variables les plus importantes
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 **Classement des variables par importance globale :**
 
@@ -781,11 +1059,29 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Cos² variables](images/10_cos2_variables.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Le cos² sur un plan**
+
+Pour une variable, le cos² sur un plan est la somme des cos² sur chaque axe du plan :
+
+$$cos^2_{plan} = cos^2_{axe1} + cos^2_{axe2}$$
+
+**Interprétation géométrique :**
+> Le cos² représente la part de la variance de la variable qui est "capturée" par le plan.
+> Un cos² de 0.60 signifie que 60% de l'information de la variable est visible sur le plan.
+
+**Conséquence pour l'interprétation :**
+- Si cos² faible → la variable apparaît **écrasée** vers le centre
+- Ce n'est pas qu'elle n'est pas importante, c'est qu'elle est importante **sur d'autres axes** !
+
+#### 📊 Description du graphique
+
 - cos² = qualité de représentation sur le plan 1-2
 - Variables avec cos² élevé → interprétation fiable
+- Format : diagramme en barres colorées
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 **Classification par qualité de représentation :**
 
@@ -807,12 +1103,38 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Nuage des individus](images/11_individus_cos2.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce que le nuage des individus ?**
+
+Le nuage des individus représente les **n individus** (ici, les communes) dans le plan factoriel. Chaque point est positionné selon ses **coordonnées factorielles** sur les axes.
+
+**Coordonnées d'un individu i sur l'axe k :**
+
+$$F_{ik} = \sum_{j=1}^{p} x_{ij}^* \times v_{jk}$$
+
+où $x_{ij}^*$ sont les données centrées-réduites et $v_{jk}$ les composantes du vecteur propre.
+
+**Règles de lecture :**
+
+| Position | Signification |
+|----------|---------------|
+| **Loin du centre** | Individu aux caractéristiques extrêmes |
+| **Proche du centre** | Individu "moyen" ou mal représenté |
+| **Dans la direction d'une variable** | Valeur élevée sur cette variable |
+| **Opposé à une variable** | Valeur faible sur cette variable |
+
+**Le cos² des individus :**
+> Comme pour les variables, le cos² d'un individu mesure sa **qualité de représentation** sur le plan.
+> Un individu avec un faible cos² peut être proche du centre alors qu'il est en réalité "extrême" sur d'autres dimensions.
+
+#### 📊 Description du graphique
+
 - Chaque point = une commune
 - Couleur = qualité de représentation (cos²)
 - **31 249 communes** projetées
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :**
 
 **Lecture par quadrant :**
 
@@ -841,11 +1163,25 @@ Cette section décrit en détail chaque sortie produite par le script R `ACP_INS
 
 ![Individus sélectionnés](images/12_individus_selection.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Pourquoi filtrer par cos² ?**
+
+Dans une ACP avec beaucoup d'individus (ici 31 249), le nuage peut être difficile à lire. Filtrer par cos² permet de :
+- **Focaliser** sur les individus dont la position est significative
+- **Éviter** d'interpréter des individus proches du centre par hasard
+- **Identifier** les profils extrêmes bien représentés
+
+**Règle pratique :**
+> Un individu avec $cos^2 > 0.5$ a plus de 50% de son information visible sur le plan → sa position est **interprétable avec confiance**.
+
+#### 📊 Description du graphique
+
 - Sélection des communes avec cos² > 0.5
 - Permet de se concentrer sur les cas bien représentés
+- Les communes filtrées ont un profil marqué sur les axes 1-2
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 **Statistiques de sélection :**
 | Critère | Valeur |
@@ -873,11 +1209,30 @@ Consulter les axes 3 et 4 pour une analyse complète.
 
 ![Top contributeurs](images/13_top_contrib_dim1.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Contribution des individus**
+
+La contribution d'un individu i à l'axe k mesure sa **part dans l'inertie** de cet axe :
+
+$$CTR_i(F_k) = \frac{p_i \times F_{ik}^2}{\lambda_k}$$
+
+où $p_i$ est le poids de l'individu (généralement $\frac{1}{n}$).
+
+**Individus influents :**
+> Les individus à forte contribution "tirent" l'axe dans leur direction.
+> Si un individu contribue trop (à lui seul > 10% de l'axe), il peut **biaiser** l'interprétation.
+
+**Analyse de sensibilité :**
+> On peut refaire l'ACP en supprimant les individus les plus contributeurs pour vérifier la **robustesse** des résultats.
+
+#### 📊 Description du graphique
+
 - Les 30 communes qui contribuent le plus à l'axe 1
 - Ces communes "tirent" l'axe dans une direction
+- Permet d'identifier les individus influents
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :
 
 **Communes qui "fabriquent" l'axe 1 :**
 
@@ -905,11 +1260,37 @@ Consulter les axes 3 et 4 pour une analyse complète.
 
 ![Biplot](images/14_biplot.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Qu'est-ce qu'un biplot ?**
+
+Le biplot (graphique bipôle) est une représentation simultanée des **individus** et des **variables** sur le même graphique.
+
+**Construction :**
+- **Individus** = points (coordonnées factorielles)
+- **Variables** = flèches (cercle des corrélations, éventuellement ré-échellonné)
+
+**Attention aux échelles :**
+> Les individus et les variables n'ont pas la même échelle. Le biplot ajuste les échelles pour que les deux soient lisibles sur le même graphique.
+
+**Lecture conjointe individus-variables :**
+
+| Situation | Interprétation |
+|-----------|----------------|
+| Individu dans la direction d'une variable | **Valeur élevée** sur cette variable |
+| Individu opposé à une variable | **Valeur faible** sur cette variable |
+| Individu perpendiculaire | **Valeur moyenne** |
+| Groupe d'individus vers une variable | Ces individus **partagent** cette caractéristique |
+
+**Utilité du biplot :**
+> C'est le graphique le plus riche de l'ACP car il permet de comprendre **pourquoi** un individu est à tel endroit du plan.
+
+#### 📊 Description du graphique
+
 - Superposition des individus (points) et variables (flèches)
 - Permet de voir quelles communes correspondent à quelles caractéristiques
 
-**🔍 RÈGLES DE LECTURE DU BIPLOT :**
+#### 🔍 RÈGLES DE LECTURE DU BIPLOT :
 
 | Configuration | Interprétation |
 |---------------|----------------|
@@ -953,11 +1334,33 @@ Consulter les axes 3 et 4 pour une analyse complète.
 
 ![Corrélations axes](images/15_correlation_axes.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Corrélation variable-axe**
+
+Ce graphique affiche les **coordonnées des variables** sur chaque axe, qui sont égales à leur corrélation avec cet axe.
+
+$$coord_j(F_k) = cor(X_j, F_k)$$
+
+**Utilité de la heatmap :**
+- Voir d'un coup d'œil **quelle variable définit quel axe**
+- Détecter les variables qui contribuent à **plusieurs axes** (couleur intense sur plusieurs colonnes)
+- Identifier les axes « purs » (dominés par une seule variable)
+
+**Nommer les axes :**
+> Pour chaque axe, on regarde les variables avec les plus fortes corrélations (positives et négatives) et on cherche le **thème commun**.
+
+**Exemple d'interprétation :**
+- Axe avec `taux_chomage` (+0.7) et `taux_proprietaires` (-0.75) → "axe de précarité"
+- Axe avec `pct_agriculture` (+0.6) et `pct_services` (-0.62) → "axe rural/urbain"
+
+#### 📊 Description du graphique
+
 - Tableau des corrélations entre variables et axes 1 à 5
+- Format heatmap : couleur = intensité de la corrélation
 - Permet de comprendre ce que représente chaque axe
 
-**🔍 RÉSULTATS OBTENUS - SIGNIFICATION DES AXES :**
+#### 🔍 RÉSULTATS OBTENUS - SIGNIFICATION DES AXES :
 
 **Axe 1 (20.82%) - "Stabilité socio-économique"**
 | Variable | Corrélation | Interprétation |
@@ -1010,11 +1413,33 @@ Consulter les axes 3 et 4 pour une analyse complète.
 
 ![Cercle Dim1-Dim3](images/16_cercle_dim1_dim3.png)
 
-**Description :**
+#### 🎓 Rappel théorique (cours)
+
+**Pourquoi regarder d'autres plans factoriels ?**
+
+Le plan 1-2 n'est pas toujours suffisant :
+- Il ne capture que **40.80%** de l'information totale
+- Certaines variables ont un **cos² faible** sur ce plan
+- Des structures intéressantes peuvent apparaître sur d'autres axes
+
+**Règle pratique :**
+> Si une variable a $cos^2 < 0.3$ sur le plan 1-2, il faut regarder les plans impliquant les axes 3, 4, etc.
+
+**Choix du plan alternatif :**
+- **Plan 1-3** : pour les variables mal représentées sur l'axe 2
+- **Plan 2-3** : si l'axe 1 domine trop et "écrase" l'information
+- **Plan 3-4** : pour des structures secondaires
+
+**Complémentarité des plans :**
+> La somme des cos² sur tous les plans = 1. Si une variable est mal représentée sur le plan 1-2, elle est **forcément** bien représentée sur d'autres plans.
+
+#### 📊 Description du graphique
+
 - Plan factoriel alternatif (axes 1 et 3)
 - Utile pour les variables mal représentées sur le plan 1-2
+- Permet de voir l'information capturée par l'axe 3 (démographie)
 
-**🔍 RÉSULTATS OBTENUS :**
+#### 🔍 RÉSULTATS OBTENUS :**
 
 **Pourquoi regarder le plan 1-3 ?**
 
