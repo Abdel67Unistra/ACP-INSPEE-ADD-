@@ -5,14 +5,46 @@
 ---
 
 ## 📖 Table des matières
-1. [Mise en situation](#mise-en-situation)
-2. [Source des données](#source-des-données)
-3. [Dictionnaire complet des variables](#dictionnaire-complet-des-variables)
-4. [Variables de l'analyse ACP](#variables-de-lanalyse-acp)
-5. [L'ACP en 5 étapes (PICCI)](#lacp-en-5-étapes-picci)
-6. [Fonctions R utilisées](#fonctions-r-utilisées)
-7. [Interprétation des résultats](#interprétation-des-résultats)
-8. [Mnémotechniques étudiant](#mnémotechniques-étudiant)
+
+### 📌 Introduction
+1. [📍 Mise en situation](#-mise-en-situation)
+2. [🔗 Source des données](#-source-des-données)
+
+### 📌 Description des données
+3. [📚 Dictionnaire complet des variables](#-dictionnaire-complet-des-variables)
+4. [🔢 Variables de l'analyse ACP](#-variables-de-lanalyse-acp)
+
+### 📌 Méthodologie
+5. [🎯 L'ACP en 5 étapes (PICCI)](#-lacp-en-5-étapes-picci)
+6. [🔧 Fonctions R utilisées](#-fonctions-r-utilisées)
+
+### 📌 Résultats de l'analyse
+7. [📈 Interprétation des résultats](#-interprétation-des-résultats)
+8. [📊 Sorties R détaillées](#-sorties-r-détaillées-et-leur-interprétation)
+9. [🖼️ Graphiques de l'ACP](#%EF%B8%8F-graphiques-de-lanalyse-acp)
+   - [Graphique 1 : Matrice de corrélation](#-graphique-1--matrice-de-corrélation)
+   - [Graphique 2 : Éboulis des valeurs propres](#-graphique-2--éboulis-des-valeurs-propres-scree-plot)
+   - [Graphique 3 : Critère du bâton brisé](#-graphique-3--critère-du-bâton-brisé)
+   - [Graphique 4 : Cercle des corrélations](#-graphique-4--cercle-des-corrélations-dim1-dim2)
+   - [Graphique 5 : Cercle avec contributions](#-graphique-5--cercle-avec-contributions-en-couleur)
+   - [Graphique 6 : Cercle avec cos²](#-graphique-6--cercle-avec-cos-en-couleur)
+   - [Graphique 7 : Contributions axe 1](#-graphique-7--contributions-des-variables-à-laxe-1)
+   - [Graphique 8 : Contributions axe 2](#-graphique-8--contributions-des-variables-à-laxe-2)
+   - [Graphique 9 : Contributions plan 1-2](#-graphique-9--contributions-au-plan-1-2)
+   - [Graphique 10 : Qualité cos²](#-graphique-10--qualité-de-représentation-cos)
+   - [Graphique 11 : Nuage des individus](#-graphique-11--nuage-des-individus-communes)
+   - [Graphique 12 : Individus sélectionnés](#-graphique-12--individus-bien-représentés-cos--05)
+   - [Graphique 13 : Top contributeurs](#-graphique-13--top-30-communes-contributrices-axe-1)
+   - [Graphique 14 : Biplot](#-graphique-14--biplot-individus--variables)
+   - [Graphique 15 : Heatmap corrélations](#-graphique-15--corrélations-variables-axes-heatmap)
+   - [Graphique 16 : Cercle Dim1-Dim3](#-graphique-16--cercle-des-corrélations-dim1-dim3)
+10. [📋 Sorties numériques détaillées](#-sorties-numériques-détaillées)
+
+### 📌 Annexes
+11. [🧠 Mnémotechniques étudiant](#-mnémotechniques-étudiant)
+12. [📁 Structure du projet](#-structure-du-projet)
+13. [📚 Références](#-références)
+14. [✍️ Auteur](#%EF%B8%8F-auteur)
 
 ---
 
