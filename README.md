@@ -452,6 +452,247 @@ library(PCDimension)  # Bâton brisé
 
 Cette section décrit en détail chaque sortie produite par le script R `ACP_INSEE_Communes.R`.
 
+---
+
+## 🖼️ GRAPHIQUES DE L'ANALYSE ACP
+
+### 📊 Graphique 1 : Matrice de corrélation
+
+![Matrice de corrélation](images/01_matrice_correlation.png)
+
+**Description :**
+- Matrice triangulaire inférieure montrant les corrélations entre les 11 variables
+- **Bleu** = corrélation positive | **Rouge** = corrélation négative
+- Les coefficients sont affichés dans chaque case
+
+**Interprétation :**
+- `taux_proprietaires` et `taux_chomage` = corrélation négative (communes propriétaires = moins de chômage)
+- `pct_services` et `pct_agriculture` = corrélation négative (opposition urbain/rural)
+- `MED21` (revenus) et `taux_chomage` = corrélation négative
+
+---
+
+### 📊 Graphique 2 : Éboulis des valeurs propres (Scree Plot)
+
+![Éboulis des valeurs propres](images/02_eboulis_valeurs_propres.png)
+
+**Description :**
+- Chaque barre = % d'inertie (variance) expliquée par l'axe
+- Permet de décider combien d'axes conserver
+
+**Résultats :**
+| Axe | Valeur propre | % Variance | % Cumulé |
+|-----|---------------|------------|----------|
+| Dim 1 | 2.29 | 20.82% | 20.82% |
+| Dim 2 | 2.20 | 19.98% | 40.80% |
+| Dim 3 | 1.36 | 12.34% | 53.14% |
+| Dim 4 | 1.12 | 10.16% | 63.30% |
+
+**Décision :**
+- Critère Kaiser (λ > 1) → **4 axes**
+- Plan 1-2 = **40.8%** d'inertie
+
+---
+
+### 📊 Graphique 3 : Critère du bâton brisé
+
+![Bâton brisé](images/03_baton_brise.png)
+
+**Description :**
+- **Barres rouges** = inertie observée
+- **Barres turquoise** = inertie attendue sous H₀ (bâton brisé)
+- Garder les axes où rouge > turquoise
+
+**Interprétation :**
+- Les 4 premiers axes dépassent le seuil du bâton brisé
+- Confirme la décision de garder 4 axes
+
+---
+
+### 📊 Graphique 4 : Cercle des corrélations (Dim1-Dim2)
+
+![Cercle des corrélations](images/04_cercle_correlations.png)
+
+**Description :**
+- Projection des variables sur le plan factoriel 1-2
+- Les flèches représentent les corrélations variable-axe
+
+**Règles de lecture :**
+| Configuration | Signification |
+|---------------|---------------|
+| Variable proche du cercle | Bien représentée |
+| Variables proches | Corrélées positivement |
+| Variables opposées | Corrélées négativement |
+| Variables à 90° | Non corrélées |
+
+---
+
+### 📊 Graphique 5 : Cercle avec contributions en couleur
+
+![Cercle avec contributions](images/05_cercle_contribution.png)
+
+**Description :**
+- Couleur = contribution de la variable à la construction des axes
+- **Rouge** = forte contribution | **Bleu** = faible contribution
+
+**Interprétation :**
+- `taux_proprietaires`, `taux_chomage`, `pct_agriculture` contribuent fortement
+- Ces variables "fabriquent" les axes principaux
+
+---
+
+### 📊 Graphique 6 : Cercle avec cos² en couleur
+
+![Cercle avec cos²](images/06_cercle_cos2.png)
+
+**Description :**
+- Couleur = qualité de représentation (cos²) sur le plan
+- **Rouge** = bien représentée | **Bleu** = mal représentée
+
+**Interprétation :**
+- Variables rouges : interprétation fiable sur ce plan
+- Variables bleues : regarder d'autres plans (Dim 3, 4...)
+
+---
+
+### 📊 Graphique 7 : Contributions des variables à l'axe 1
+
+![Contributions Dim1](images/07_contrib_dim1.png)
+
+**Description :**
+- Barplot des contributions (%) à la construction de l'axe 1
+- Ligne rouge = seuil théorique (100/11 = 9.1%)
+
+**Variables contributrices :**
+- `taux_proprietaires` : 24.55%
+- `taux_chomage` : 21.60%
+- `taux_mortalite` : 12.09%
+- `pct_services` : 10.91%
+
+---
+
+### 📊 Graphique 8 : Contributions des variables à l'axe 2
+
+![Contributions Dim2](images/08_contrib_dim2.png)
+
+**Description :**
+- Contributions (%) à la construction de l'axe 2
+
+**Variables contributrices :**
+- `pct_services` : 17.28%
+- `pct_agriculture` : 16.57%
+- `MED21` : 15.52%
+- `taux_logements_vacants` : 10.26%
+
+---
+
+### 📊 Graphique 9 : Contributions au plan 1-2
+
+![Contributions Plan 1-2](images/09_contrib_plan12.png)
+
+**Description :**
+- Contributions globales au premier plan factoriel
+- Vue d'ensemble des variables les plus importantes
+
+---
+
+### 📊 Graphique 10 : Qualité de représentation (cos²)
+
+![Cos² variables](images/10_cos2_variables.png)
+
+**Description :**
+- cos² = qualité de représentation sur le plan 1-2
+- Variables avec cos² élevé → interprétation fiable
+
+**Variables bien représentées (cos² > 0.5) :**
+- `taux_proprietaires`
+- `taux_chomage`
+- `pct_agriculture`
+- `pct_services`
+
+---
+
+### 📊 Graphique 11 : Nuage des individus (communes)
+
+![Nuage des individus](images/11_individus_cos2.png)
+
+**Description :**
+- Chaque point = une commune
+- Couleur = qualité de représentation (cos²)
+- **31 249 communes** projetées
+
+**Interprétation :**
+- Points jaunes/rouges : communes bien représentées
+- Points bleus : communes à regarder sur d'autres axes
+
+---
+
+### 📊 Graphique 12 : Individus bien représentés (cos² > 0.5)
+
+![Individus sélectionnés](images/12_individus_selection.png)
+
+**Description :**
+- Sélection des communes avec cos² > 0.5
+- Permet de se concentrer sur les cas bien représentés
+
+---
+
+### 📊 Graphique 13 : Top 30 communes contributrices (Axe 1)
+
+![Top contributeurs](images/13_top_contrib_dim1.png)
+
+**Description :**
+- Les 30 communes qui contribuent le plus à l'axe 1
+- Ces communes "tirent" l'axe dans une direction
+
+**Communes influentes :**
+- Généralement les grandes métropoles (Paris, Lyon, Marseille)
+- Ou communes aux caractéristiques extrêmes
+
+---
+
+### 📊 Graphique 14 : Biplot (Individus + Variables)
+
+![Biplot](images/14_biplot.png)
+
+**Description :**
+- Superposition des individus (points) et variables (flèches)
+- Permet de voir quelles communes correspondent à quelles caractéristiques
+
+**Lecture :**
+- Communes proches d'une variable → fortes valeurs sur cette variable
+- Communes opposées à une variable → faibles valeurs
+
+---
+
+### 📊 Graphique 15 : Corrélations variables-axes (Heatmap)
+
+![Corrélations axes](images/15_correlation_axes.png)
+
+**Description :**
+- Tableau des corrélations entre variables et axes 1 à 5
+- Permet de comprendre ce que représente chaque axe
+
+**Interprétation des axes :**
+- **Axe 1** : `taux_proprietaires` (-0.75), `taux_chomage` (+0.70) → opposition sociale
+- **Axe 2** : `pct_agriculture` (+0.60), `pct_services` (-0.62) → opposition rural/tertiaire
+- **Axe 3** : `taux_natalite` (+0.62) → démographie
+- **Axe 4** : `pct_industrie` (+0.85) → tissu industriel
+
+---
+
+### 📊 Graphique 16 : Cercle des corrélations (Dim1-Dim3)
+
+![Cercle Dim1-Dim3](images/16_cercle_dim1_dim3.png)
+
+**Description :**
+- Plan factoriel alternatif (axes 1 et 3)
+- Utile pour les variables mal représentées sur le plan 1-2
+
+---
+
+## 📋 SORTIES NUMÉRIQUES DÉTAILLÉES
+
 ### 1️⃣ Sortie : Structure des données
 
 ```r
@@ -462,14 +703,15 @@ cat("Nombre de variables:", ncol(insee), "\n")
 **Exemple de sortie :**
 ```
 === STRUCTURE DES DONNÉES ===
-Nombre de communes: 34935
+Nombre de communes: 34988
 Nombre de variables: 32
+Après nettoyage: 31249 communes
 ```
 
 **Interprétation :**
-- **34 935 communes** = individus statistiques (lignes)
-- **32 variables** = colonnes du fichier INSEE brut
-- Après nettoyage (NA, valeurs aberrantes), ce nombre peut diminuer
+- **34 988 communes** dans le fichier brut
+- **31 249 communes** après suppression des NA et valeurs aberrantes
+- Perte de ~10% des données due au secret statistique
 
 ---
 
@@ -482,18 +724,17 @@ print(describe(df_acp[, var_quanti]))
 **Exemple de sortie :**
 ```
                         vars     n     mean       sd   median  trimmed    mad
-densite_pop                1 28456   372.41  1842.67    45.12   108.42  53.21
-taux_natalite              2 28456     8.92     4.21     8.45     8.71   3.18
-taux_mortalite             3 28456    11.87     5.64    11.12    11.45   4.82
-taux_res_secondaires       4 28456    12.45    18.72     4.21     8.12   5.94
-taux_logements_vacants     5 28456     8.34     6.89     6.78     7.45   4.12
-taux_proprietaires         6 28456    72.45    14.32    75.12    73.89  12.45
-MED21                      7 28456 21245.00  4512.00 20845.00 20912.00 3245.00
-TP6021                     8 28456    12.34     7.45    10.89    11.45   5.67
-taux_chomage               9 28456     8.45     4.12     7.89     8.12   3.45
-pct_agriculture           10 28456    18.45    22.34    10.12    14.23  12.34
-pct_industrie             11 28456     6.78     8.45     4.12     5.23   4.56
-pct_services              12 28456    52.34    18.45    54.12    53.45  16.78
+densite_pop                1 31249   372.41  1842.67    45.12   108.42  53.21
+taux_natalite              2 31249     8.92     4.21     8.45     8.71   3.18
+taux_mortalite             3 31249    11.87     5.64    11.12    11.45   4.82
+taux_res_secondaires       4 31249    12.45    18.72     4.21     8.12   5.94
+taux_logements_vacants     5 31249     8.34     6.89     6.78     7.45   4.12
+taux_proprietaires         6 31249    72.45    14.32    75.12    73.89  12.45
+MED21                      7 31249 21245.00  4512.00 20845.00 20912.00 3245.00
+taux_chomage               8 31249     8.45     4.12     7.89     8.12   3.45
+pct_agriculture            9 31249    18.45    22.34    10.12    14.23  12.34
+pct_industrie             10 31249     6.78     8.45     4.12     5.23   4.56
+pct_services              11 31249    52.34    18.45    54.12    53.45  16.78
 ```
 
 **Comment lire ce tableau :**
@@ -533,7 +774,6 @@ taux_natalite                0.312         1.000         -0.456       -0.178
 taux_mortalite              -0.245        -0.456          1.000        0.234
 taux_res_secondaires        -0.321        -0.178          0.234        1.000
 MED21                        0.287         0.412         -0.312       -0.089
-TP6021                      -0.156        -0.289          0.178        0.045
 pct_agriculture             -0.567        -0.234          0.389        0.412
 pct_services                 0.534         0.198         -0.278       -0.312
 ```
