@@ -42,8 +42,8 @@
 11. [📋 Sorties numériques détaillées](#-sorties-numériques-détaillées)
 12. [📝 COMPTE-RENDU DES RÉSULTATS](#-compte-rendu-des-résultats-de-lacp)
 
-### 📌 Cours complet et Soutenance
-13. [📘 COURS COMPLET : La recette de l'ACP](#-cours-complet--la-recette-de-lacp-pour-la-soutenance)
+### 📌 Cours complet et Présentation
+13. [📘 COURS COMPLET : La recette de l'ACP](#-cours-complet--la-recette-de-lacp-pour-la-présentation)
     - [Qu'est-ce que l'ACP ?](#-quest-ce-que-lacp-)
     - [Les 5 étapes PICCI](#-les-5-étapes-de-lacp--picci)
     - [Étape 1 : Préparation](#-étape-1--préparation-p)
@@ -52,14 +52,14 @@
     - [Étape 4 : Contributions](#-étape-4--contributions-c)
     - [Étape 5 : Individus](#-étape-5--individus-i)
 14. [📊 Traduction des 16 graphiques](#-traduction-complète-des-16-graphiques)
-15. [🎓 Questions de soutenance et réponses](#-questions-de-soutenance-et-réponses)
+15. [🎓 Questions de présentation et réponses](#-questions-de-présentation-et-réponses)
     - [Questions sur les définitions](#-questions-sur-les-définitions)
     - [Questions sur les critères](#-questions-sur-les-critères)
     - [Questions sur l'interprétation](#-questions-sur-linterprétation)
     - [Questions sur notre analyse](#-questions-sur-notre-analyse)
     - [Questions sur la méthode](#-questions-sur-la-méthode)
     - [Questions pièges](#-questions-pièges)
-16. [📋 Checklist avant soutenance](#-checklist-avant-soutenance)
+16. [📋 Checklist avant présentation](#-checklist-avant-présentation)
 
 ### 📌 Annexes
 17. [🧠 Mnémotechniques étudiant](#-mnémotechniques-étudiant)
@@ -2473,7 +2473,7 @@ C'est le nombre d'axes à retenir visuellement sur l'éboulis.
 
 ---
 
-## � COURS COMPLET : LA RECETTE DE L'ACP (POUR LA SOUTENANCE)
+## � COURS COMPLET : LA RECETTE DE L'ACP (POUR LA PRÉSENTATION)
 
 ### 🎯 Qu'est-ce que l'ACP ?
 
@@ -2809,7 +2809,7 @@ où $x_{ij}^*$ = valeur centrée-réduite de l'individu i pour la variable j.
 
 ---
 
-## 🎓 QUESTIONS DE SOUTENANCE ET RÉPONSES
+## 🎓 QUESTIONS DE PRÉSENTATION ET RÉPONSES
 
 ### ❓ Questions sur les définitions
 
@@ -2919,7 +2919,7 @@ où $x_{ij}^*$ = valeur centrée-réduite de l'individu i pour la variable j.
 
 ---
 
-## 📋 CHECKLIST AVANT SOUTENANCE
+## 📋 CHECKLIST AVANT PRÉSENTATION
 
 ### ✅ Je maîtrise les définitions
 - [ ] ACP = transformation de variables corrélées en composantes non corrélées
